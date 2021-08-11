@@ -4,8 +4,7 @@ import ManageCarCard from "./ManageCarCard";
 
 function ManagePage() {
   const location = useLocation()
-  // const { message } = location.state
-  console.log(location)
+  const user = location.state.user
   const [formData, setFormData] = useState({
     name: "",
     manufacturer: "",
@@ -67,6 +66,7 @@ function ManagePage() {
   return (
     <div>
       <h3>Add, edit, and remove cars from the database.</h3>
+      <h4>Logged in as {user.name}</h4>
       <form onSubmit={handleSubmit}>
           <input placeholder="Manufactuer" name="manufacturer" value={formData.manufacturer} onChange={handleChange}></input>
           <input placeholder="Name" name="name" value={formData.name} onChange={handleChange}></input>

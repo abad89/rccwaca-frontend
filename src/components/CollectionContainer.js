@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import CollectionCard from "./CollectionCard";
 
 function CollectionContainer({ user }) {
@@ -10,7 +11,11 @@ function CollectionContainer({ user }) {
       .then(setCollection);
   }, []);
 
-  console.log(collection);
+  // console.log(collection);
+
+  function handleLogOutClick() {
+    console.log("Logged out!");
+  }
 
   const CarsItem = collection.map((car) => (
     <CollectionCard
@@ -25,8 +30,23 @@ function CollectionContainer({ user }) {
 
   return (
     <div>
+      <p>
+        <Link
+          to={{
+            pathname: "/manage",
+            state: {
+              user: user,
+            },
+          }}
+        >
+          Car Database
+        </Link>
+      </p>
       {user.name}'s Collection:
       {CarsItem}
+      <p>
+        <button onClick={handleLogOutClick}>Log Out</button>
+      </p>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import UserSelect from "./UserSelect";
 import CollectionContainer from "./CollectionContainer";
 import Footer from "./Footer";
@@ -52,16 +52,6 @@ function App() {
             />
           ) : null}
           {loggedIn ? null : <CollectionContainer user={currentUser} />}
-          {loggedIn ? null : <Link
-            to={{
-              pathname: "/manage",
-              state: {
-                user: currentUser,
-              },
-            }}
-          >
-            Car Database
-          </Link>}
         </Route>
       </Switch>
       <Footer />
