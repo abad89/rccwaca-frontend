@@ -1,8 +1,9 @@
 function CollectionCard({ name, img_url, manufacturer }) {
     return (
-        <div>
+        <div className="box">
            <p>{manufacturer} {name}</p>
-           <img src={img_url} width="200" alt={name}/>
+           <img className="carimage" src={img_url} width="200" alt={name}/>
+           <button className="removebutton">Remove</button>
         </div>
     )
 }

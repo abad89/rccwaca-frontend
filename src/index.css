@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* .removebutton {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.carimage:hover + .removebutton {
+  display: block
+} */
+
+.removebutton {
+  display: none
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+}
+.box carimage {
+  width: 100%;
+  height: auto;
+}
+.box .removebutton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carimage:hover + .removebutton {
+  display: block
+}
+
+.removebutton:hover {
+  display: block
+}

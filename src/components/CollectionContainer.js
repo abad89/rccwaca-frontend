@@ -14,6 +14,7 @@ function CollectionContainer({ user }) {
   // console.log(collection);
 
   function handleLogOutClick() {
+    window.location.reload();
     console.log("Logged out!");
   }
 
