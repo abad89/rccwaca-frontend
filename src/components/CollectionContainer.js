@@ -18,6 +18,17 @@ function CollectionContainer({ user }) {
     console.log("Logged out!");
   }
 
+  function handleRemoveCar(carToRemove) {
+    const updatedCollection = collection.filter((car) => car.id !== carToRemove)
+    setCollection(updatedCollection)
+  }
+
+  function handleAddCarToCollection(carToAdd) {
+    const updatedCollection = [...collection, carToAdd]
+    setCollection(updatedCollection)
+    console.log("Car added!")
+  }
+
   const CarsItem = collection.map((car) => (
     <CollectionCard
       key={car.id}
@@ -26,6 +37,8 @@ function CollectionContainer({ user }) {
       name={car.name}
       car_id={car.id}
       img_url={car.img_url}
+      user_id={user.id}
+      onRemoveCar={handleRemoveCar}
     />
   ));
 

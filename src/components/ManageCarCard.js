@@ -1,4 +1,4 @@
-function ManageCarCard({ name, img_url, car_id, price, manufacturer, onDeleteCar }) {
+function ManageCarCard({ name, img_url, car_id, price, manufacturer, user_id, onDeleteCar, onAddCarToCollection }) {
   function handleDeleteClick() {
     fetch(`http://localhost:9393/cars/${car_id}`, {
       method: "DELETE",
@@ -10,7 +10,14 @@ function ManageCarCard({ name, img_url, car_id, price, manufacturer, onDeleteCar
   }
 
   function handleAddCarToCollectionClick() {
-    console.log("Added car to your collection!")
+    fetch(`http://localhost:9393/users/${user_id}/${car_id}`, {
+    method: "POST",
+  })
+    .then((r) => r.json())
+    // .then(() => {
+    //   onAddCarToCollection(car_id);
+    // })
+    // console.log("Added car to your collection!")
   }
 
   return (

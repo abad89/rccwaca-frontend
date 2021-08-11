@@ -60,6 +60,7 @@ function ManagePage() {
       img_url={car.img_url}
       price={car.price}
       onDeleteCar={handleDeleteCar}
+      user_id={user.id}
     />
   ));
 
