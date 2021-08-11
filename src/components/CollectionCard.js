@@ -1,9 +1,8 @@
-function CollectionCard({ name, img_url, car_id }) {
+function CollectionCard({ name, img_url, manufacturer }) {
     return (
         <div>
-           {name}
-           <br/>
-           <img src={img_url} width="200"/>
+           <p>{manufacturer} {name}</p>
+           <img src={img_url} width="200" alt={name}/>
         </div>
     )
 }

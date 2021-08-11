@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CollectionCard from "./CollectionCard";
 
-function CollectionContainer({ user_id }) {
+function CollectionContainer({ user_id, name }) {
   const [collection, setCollection] = useState([]);
 
   useEffect(() => {
@@ -15,6 +15,8 @@ function CollectionContainer({ user_id }) {
   const CarsItem = collection.map((car) => (
     <CollectionCard
       key={car.id}
+      manufacturer={car.manufacturer}
+      price={car.price}
       name={car.name}
       car_id={car.id}
       img_url={car.img_url}
@@ -23,7 +25,7 @@ function CollectionContainer({ user_id }) {
 
   return (
     <div>
-      Hello Collection Container!
+      {name}'s Collection:'
       {CarsItem}
     </div>
   );

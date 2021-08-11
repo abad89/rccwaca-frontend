@@ -1,8 +1,7 @@
-function UserButtons({ name, id, onChangeUser, onChangeHideUserList }) {
+function UserButtons({ name, id, onChangeUser }) {
 
         function handleClick(){
             onChangeUser(id)
-            // if (id >50) {onChangeHideUserList()}
         }
 
     return (

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { Route, Switch, NavLink } from "react-router-dom";
 import UserSelect from "./UserSelect";
 import CollectionContainer from "./CollectionContainer";
+import Footer from "./Footer";
+import ManagePage from "./ManagePage"
 
 function App() {
   const [currentUser, setCurrentUser] = useState(0);
@@ -12,7 +15,7 @@ function App() {
       .then((r) => r.json())
       .then(setUserList);
   }, []);
-  // console.log("current user", currentUser)
+  console.log(userList)
 
   function handleChangeUser(id) {
     if (currentUser > 0) {
@@ -28,14 +31,24 @@ function App() {
 
   return (
     <div className="App">
-      {hideUserList ? (
-        <UserSelect
-          userList={userList}
-          onChangeUser={handleChangeUser}
-          onChangeHideUserList={handleChangeHideUserList}
-        />
-      ) : null}
-      {hideUserList ? null : (<CollectionContainer user_id={currentUser}/>)}
+      {/* <Header /> */}
+      <Switch>
+        <Route exact path="/manage">
+          <ManagePage />
+        </Route>
+        <Route exact path="/">
+        {hideUserList ? (
+          <UserSelect
+            userList={userList}
+            onChangeUser={handleChangeUser}
+            onChangeHideUserList={handleChangeHideUserList}
+          />
+        ) : null}
+        {hideUserList ? null : <CollectionContainer user_id={currentUser} name={currentUser.name} />}
+        <NavLink to="/manage">Manage Car Database</NavLink>
+        </Route>
+      </Switch>
+      <Footer />
     </div>
   );
 }
