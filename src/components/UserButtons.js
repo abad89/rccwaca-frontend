@@ -15,7 +15,7 @@ function UserButtons({ user, name, id, onChangeUser, onDeleteUser }) {
 
   return (
     <div>
-      <button onClick={handleSelectClick}>{name}</button> ->
+      <button onClick={handleSelectClick}>{name}</button> -&gt;
       <button onClick={handleDeleteClick}> Delete User</button>
     </div>
   );

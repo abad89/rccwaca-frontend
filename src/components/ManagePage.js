@@ -1,8 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ManageCarCard from "./ManageCarCard";
 
 function ManagePage() {
+  const location = useLocation()
+  // const { message } = location.state
+  console.log(location)
   const [formData, setFormData] = useState({
     name: "",
     manufacturer: "",

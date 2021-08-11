@@ -1,36 +1,38 @@
 import { useState, useEffect } from "react";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import UserSelect from "./UserSelect";
 import CollectionContainer from "./CollectionContainer";
 import Footer from "./Footer";
-import ManagePage from "./ManagePage"
+import ManagePage from "./ManagePage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
   const [userList, setUserList] = useState([]);
-  const [hideUserList, setHideUserList] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:9393/users")
       .then((r) => r.json())
       .then(setUserList);
   }, []);
-  console.log(userList)
+  console.log(userList);
 
   function handleChangeUser(user) {
     if (currentUser) {
-      handleChangeHideUserList();
+      handleLogIn();
     }
     setCurrentUser(user);
     console.log(currentUser);
   }
   function handleDeleteUser(userToDelete) {
-    const updatedUserList = userList.filter((user) => user.id !== userToDelete.id);
-    setUserList(updatedUserList)
+    const updatedUserList = userList.filter(
+      (user) => user.id !== userToDelete.id
+    );
+    setUserList(updatedUserList);
   }
 
-  function handleChangeHideUserList() {
-    setHideUserList((hideUserList) => !hideUserList);
+  function handleLogIn() {
+    setLoggedIn((loggedIn) => !loggedIn);
   }
 
   return (
@@ -41,16 +43,25 @@ function App() {
           <ManagePage />
         </Route>
         <Route exact path="/">
-        {hideUserList ? (
-          <UserSelect
-            userList={userList}
-            onChangeUser={handleChangeUser}
-            onChangeHideUserList={handleChangeHideUserList}
-            onDeleteUser={handleDeleteUser}
-          />
-        ) : null}
-        {hideUserList ? null : <CollectionContainer user={currentUser} />}
-        <NavLink to="/manage">Manage Car Database</NavLink>
+          {loggedIn ? (
+            <UserSelect
+              userList={userList}
+              onChangeUser={handleChangeUser}
+              onChangeHideUserList={handleLogIn}
+              onDeleteUser={handleDeleteUser}
+            />
+          ) : null}
+          {loggedIn ? null : <CollectionContainer user={currentUser} />}
+          {loggedIn ? null : <Link
+            to={{
+              pathname: "/manage",
+              state: {
+                user: currentUser,
+              },
+            }}
+          >
+            Car Database
+          </Link>}
         </Route>
       </Switch>
       <Footer />

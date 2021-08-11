@@ -9,6 +9,10 @@ function ManageCarCard({ name, img_url, car_id, price, manufacturer, onDeleteCar
       });
   }
 
+  function handleAddCarToCollectionClick() {
+    console.log("Added car to your collection!")
+  }
+
   return (
     <div>
       <p>Manufacturer: {manufacturer}</p>
@@ -18,6 +22,7 @@ function ManageCarCard({ name, img_url, car_id, price, manufacturer, onDeleteCar
       <p>
         Image URL: <a href={img_url}>{img_url}</a>
       </p>
+      <button onClick={handleAddCarToCollectionClick}>Add to your Collection</button>
       <button onClick={handleDeleteClick}>Delete from DB!</button>
     </div>
   );
