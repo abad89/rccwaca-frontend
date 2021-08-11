@@ -1,15 +1,17 @@
 import UserButtons from "./UserButtons.js";
 
-function UserSelect({ userList, onChangeUser, onChangeHideUserList }) {
+function UserSelect({ userList, onChangeUser, onChangeHideUserList, onDeleteUser }) {
   // console.log(userList)
 
   const usersItem = userList.map((user) => (
     <UserButtons
       onChangeUser={onChangeUser}
+      onDeleteUser={onDeleteUser}
       onChangeHideUserList={onChangeHideUserList}
       key={user.id}
       name={user.name}
       id={user.id}
+      user={user}
     />
   ));
 

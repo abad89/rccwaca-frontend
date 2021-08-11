@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import ManagePage from "./ManagePage"
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(0);
+  const [currentUser, setCurrentUser] = useState();
   const [userList, setUserList] = useState([]);
   const [hideUserList, setHideUserList] = useState(true);
 
@@ -17,12 +17,16 @@ function App() {
   }, []);
   console.log(userList)
 
-  function handleChangeUser(id) {
-    if (currentUser > 0) {
+  function handleChangeUser(user) {
+    if (currentUser) {
       handleChangeHideUserList();
     }
-    setCurrentUser(id);
+    setCurrentUser(user);
     console.log(currentUser);
+  }
+  function handleDeleteUser(userToDelete) {
+    const updatedUserList = userList.filter((user) => user.id !== userToDelete.id);
+    setUserList(updatedUserList)
   }
 
   function handleChangeHideUserList() {
@@ -42,9 +46,10 @@ function App() {
             userList={userList}
             onChangeUser={handleChangeUser}
             onChangeHideUserList={handleChangeHideUserList}
+            onDeleteUser={handleDeleteUser}
           />
         ) : null}
-        {hideUserList ? null : <CollectionContainer user_id={currentUser} name={currentUser.name} />}
+        {hideUserList ? null : <CollectionContainer user={currentUser} />}
         <NavLink to="/manage">Manage Car Database</NavLink>
         </Route>
       </Switch>

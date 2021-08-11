@@ -1,13 +1,24 @@
-function UserButtons({ name, id, onChangeUser }) {
+function UserButtons({ user, name, id, onChangeUser, onDeleteUser }) {
+  function handleSelectClick() {
+    onChangeUser(user);
+  }
+  function handleDeleteClick() {
+    fetch(`http://localhost:9393/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => {
+        onDeleteUser(user);
+      });
+    console.log("deleted user", user);
+  }
 
-        function handleClick(){
-            onChangeUser(id)
-        }
-
-    return (
-        <div>
-        <button onClick={handleClick}>{name}</button>
-        </div>
-)};
+  return (
+    <div>
+      <button onClick={handleSelectClick}>{name}</button> ->
+      <button onClick={handleDeleteClick}> Delete User</button>
+    </div>
+  );
+}
 
 export default UserButtons;

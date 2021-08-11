@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import CollectionCard from "./CollectionCard";
 
-function CollectionContainer({ user_id, name }) {
+function CollectionContainer({ user }) {
   const [collection, setCollection] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:9393/collection/${user_id}`)
+    fetch(`http://localhost:9393/collection/${user.id}`)
       .then((r) => r.json())
       .then(setCollection);
   }, []);
@@ -25,7 +25,7 @@ function CollectionContainer({ user_id, name }) {
 
   return (
     <div>
-      {name}'s Collection:'
+      {user.name}'s Collection:
       {CarsItem}
     </div>
   );
