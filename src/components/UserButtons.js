@@ -14,9 +14,11 @@ function UserButtons({ user, name, id, onChangeUser, onDeleteUser }) {
   }
 
   return (
-    <div>
-      <button onClick={handleSelectClick}>{name}</button> -&gt;
-      <button onClick={handleDeleteClick}> Delete User</button>
+    <div className="">
+      <div className={"p-1 col-6"}>
+        <button className={"btn btn-outline-primary"} onClick={handleSelectClick}>{name}</button> -&gt;
+        <button className={"btn btn-sm btn-outline-danger"} onClick={handleDeleteClick}> Delete User</button>
+      </div>
     </div>
   );
 }

@@ -3,8 +3,8 @@
 function Footer() {
     return (
         <div>
-            <p>©2021 Anthony Badalamenti</p>
-            <p>Phase 3 student project for Flatiron School Software Development Course</p>
+            <p className={"fs-6"}>©2021 Anthony Badalamenti</p>
+            <p className={"fs-6"}>Phase 3 student project for Flatiron School Software Development Course</p>
         </div>
     )
 }

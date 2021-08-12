@@ -23,11 +23,11 @@ function CollectionContainer({ user }) {
     setCollection(updatedCollection)
   }
 
-  function handleAddCarToCollection(carToAdd) {
-    const updatedCollection = [...collection, carToAdd]
-    setCollection(updatedCollection)
-    console.log("Car added!")
-  }
+  // function handleAddCarToCollection(carToAdd) {
+  //   const updatedCollection = [...collection, carToAdd]
+  //   setCollection(updatedCollection)
+  //   console.log("Car added!")
+  // }
 
   const CarsItem = collection.map((car) => (
     <CollectionCard
@@ -43,13 +43,14 @@ function CollectionContainer({ user }) {
   ));
 
   return (
-    <div>
+    <div className={"w-100"}>
       <p>
         <Link
           to={{
             pathname: "/manage",
             state: {
               user: user,
+
             },
           }}
         >
@@ -57,7 +58,11 @@ function CollectionContainer({ user }) {
         </Link>
       </p>
       {user.name}'s Collection:
-      {CarsItem}
+      <div className={"container text-center"}>
+        <div className="row">
+          {CarsItem}
+        </div>
+      </div>
       <p>
         <button onClick={handleLogOutClick}>Log Out</button>
       </p>

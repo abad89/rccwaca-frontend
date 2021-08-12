@@ -31,6 +31,11 @@ function App() {
     setUserList(updatedUserList);
   }
 
+  function handleAddUser(userToAdd) {
+    const updatedUserList = [...userList, userToAdd];
+    setUserList(updatedUserList);
+  }
+
   function handleLogIn() {
     setLoggedIn((loggedIn) => !loggedIn);
   }
@@ -43,14 +48,17 @@ function App() {
           <ManagePage />
         </Route>
         <Route exact path="/">
-          {loggedIn ? (
-            <UserSelect
-              userList={userList}
-              onChangeUser={handleChangeUser}
-              onChangeHideUserList={handleLogIn}
-              onDeleteUser={handleDeleteUser}
-            />
-          ) : null}
+          <div className="container">
+            {loggedIn ? (
+              <UserSelect
+                userList={userList}
+                onChangeUser={handleChangeUser}
+                onChangeHideUserList={handleLogIn}
+                onDeleteUser={handleDeleteUser}
+                onAddUser={handleAddUser}
+              />
+            ) : null}
+          </div>
           {loggedIn ? null : <CollectionContainer user={currentUser} />}
         </Route>
       </Switch>

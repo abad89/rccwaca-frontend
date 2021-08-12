@@ -15,22 +15,19 @@ function CollectionCard({
         onRemoveCar(car_id);
       });
   }
-
+  // const trashcan = "🗑"
   return (
-    <div className="box card">
-      <img
-        className="carimage card-img-top"
-        src={img_url}
-        width="200"
-        alt={name}
-      />
-      <div className="card-body">
-        <p className="card-text">
-          {manufacturer} {name}
-        </p>
-        <button className="removebutton" onClick={handleRemoveClick}>
-          Remove
-        </button>
+    <div className={"p-2 col-3"}>
+      <div className="card h-100">
+        <img src={img_url} className="card-img-top" alt={name} />
+        <div className="card-body">
+          <h5 className="card-title">
+            {manufacturer} {name}
+          </h5>
+          <button className="btn btn-outline-danger" onClick={handleRemoveClick}>
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );

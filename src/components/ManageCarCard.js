@@ -22,7 +22,7 @@ function ManageCarCard({ name, img_url, car_id, price, manufacturer, user_id, on
 
   return (
     <div className="p-3 col-3">
-      <div className="card h-75 w-75">
+      <div className="card h-100 w-75">
         <img src={img_url} class={"mh-75 mw-75"} alt={name}/>
         <p class={"fs-6"}>Manufacturer: {manufacturer}</p>
         <p class={"fs-6"}>Name: {name}</p>
