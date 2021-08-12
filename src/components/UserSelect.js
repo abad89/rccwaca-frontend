@@ -50,8 +50,10 @@ function UserSelect({
 
   return (
     <div>
-      Please select your username. Go ahead and click it twice until I figure
+      <p>
+        Please select your username. Go ahead and click it twice until I figure
       out why it doesn't work the first time.
+      </p>
       <div>
       <form onSubmit={handleSubmit}>
         <input placeholder="Username" name="name" value={formData.name} onChange={handleChange}></input>

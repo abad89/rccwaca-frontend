@@ -51,6 +51,7 @@ function ManagePage() {
       setCarsList(updatedCarsList);
   }
 
+
   const CarsItem = carsList.map((car) => (
     <ManageCarCard
       key={car.id}
@@ -59,8 +60,9 @@ function ManagePage() {
       car_id={car.id}
       img_url={car.img_url}
       price={car.price}
-      onDeleteCar={handleDeleteCar}
       user_id={user.id}
+      onDeleteCar={handleDeleteCar}
+      // onAddCarToCollection={handleAddCarToCollection}
     />
   ));
 
@@ -75,7 +77,7 @@ function ManagePage() {
           <input placeholder="Image Link" name="img_url" value={formData.img_url} onChange={handleChange}></input>
           <input type="submit" value="Add Car"></input>
       </form>
-          <div>
+          <div className={"row"}>
               {CarsItem}
           </div>
       

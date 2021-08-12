@@ -9,21 +9,29 @@ function CollectionCard({
   function handleRemoveClick() {
     fetch(`http://localhost:9393/collectioncar/${user_id}/${car_id}`, {
       method: "DELETE",
-    }).then((r) => r.json())
+    })
+      .then((r) => r.json())
       .then(() => {
         onRemoveCar(car_id);
       });
   }
 
   return (
-    <div className="box">
-      <p>
-        {manufacturer} {name}
-      </p>
-      <img className="carimage" src={img_url} width="200" alt={name} />
-      <button className="removebutton" onClick={handleRemoveClick}>
-        Remove
-      </button>
+    <div className="box card">
+      <img
+        className="carimage card-img-top"
+        src={img_url}
+        width="200"
+        alt={name}
+      />
+      <div className="card-body">
+        <p className="card-text">
+          {manufacturer} {name}
+        </p>
+        <button className="removebutton" onClick={handleRemoveClick}>
+          Remove
+        </button>
+      </div>
     </div>
   );
 }

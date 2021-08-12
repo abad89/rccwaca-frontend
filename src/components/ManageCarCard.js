@@ -10,7 +10,7 @@ function ManageCarCard({ name, img_url, car_id, price, manufacturer, user_id, on
   }
 
   function handleAddCarToCollectionClick() {
-    fetch(`http://localhost:9393/users/${user_id}/${car_id}`, {
+    fetch(`http://localhost:9393/collectioncar/${user_id}/${car_id}`, {
     method: "POST",
   })
     .then((r) => r.json())
@@ -21,16 +21,18 @@ function ManageCarCard({ name, img_url, car_id, price, manufacturer, user_id, on
   }
 
   return (
-    <div>
-      <p>Manufacturer: {manufacturer}</p>
-      <p>Name: {name}</p>
-      <p>Price: {price}</p>
-      <img src={img_url} width="100" alt={name}/>
-      <p>
-        Image URL: <a href={img_url}>{img_url}</a>
-      </p>
-      <button onClick={handleAddCarToCollectionClick}>Add to your Collection</button>
-      <button onClick={handleDeleteClick}>Delete from DB!</button>
+    <div className="p-3 col-3">
+      <div className="card h-75 w-75">
+        <img src={img_url} class={"mh-75 mw-75"} alt={name}/>
+        <p class={"fs-6"}>Manufacturer: {manufacturer}</p>
+        <p class={"fs-6"}>Name: {name}</p>
+        <p class={"fs-6"}>Price: {price}</p>
+        <p  class={"fs-6"}>
+          Image URL: <a href={img_url}>{img_url}</a>
+        </p>
+        <button class={"btn btn-primary"} onClick={handleAddCarToCollectionClick}>Add to your Collection</button>
+        <button class={"btn btn-danger"} onClick={handleDeleteClick}>Delete from DB!</button>
+      </div>
     </div>
   );
 }
