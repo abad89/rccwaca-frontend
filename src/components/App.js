@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import UserSelect from "./UserSelect";
 import CollectionContainer from "./CollectionContainer";
+import Header from "./Header"
 import Footer from "./Footer";
 import ManagePage from "./ManagePage";
 
@@ -15,14 +16,14 @@ function App() {
       .then((r) => r.json())
       .then(setUserList);
   }, []);
-  console.log(userList);
+  // console.log(userList);
 
   function handleChangeUser(user) {
     if (currentUser) {
       handleLogIn();
     }
     setCurrentUser(user);
-    console.log(currentUser);
+    // console.log(currentUser);
   }
   function handleDeleteUser(userToDelete) {
     const updatedUserList = userList.filter(
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       <Switch>
         <Route exact path="/manage">
           <ManagePage />

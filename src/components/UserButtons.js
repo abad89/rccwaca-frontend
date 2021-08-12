@@ -10,7 +10,7 @@ function UserButtons({ user, name, id, onChangeUser, onDeleteUser }) {
       .then(() => {
         onDeleteUser(user);
       });
-    console.log("deleted user", user);
+    // console.log("deleted user", user);
   }
 
   return (

@@ -4,9 +4,9 @@ import CollectionCard from "./CollectionCard";
 
 function CollectionContainer({ user }) {
   const [collection, setCollection] = useState([]);
-
+  const user_id = user.id
   useEffect(() => {
-    fetch(`http://localhost:9393/collection/${user.id}`)
+    fetch(`http://localhost:9393/collection/${user_id}`)
       .then((r) => r.json())
       .then(setCollection);
   }, []);
@@ -15,7 +15,7 @@ function CollectionContainer({ user }) {
 
   function handleLogOutClick() {
     window.location.reload();
-    console.log("Logged out!");
+    // console.log("Logged out!");
   }
 
   function handleRemoveCar(carToRemove) {
