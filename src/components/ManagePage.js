@@ -18,7 +18,7 @@ function ManagePage() {
       .then((r) => r.json())
       .then(setCarsList);
   }, []);
-  console.log(carsList);
+  // console.log(carsList);
 
   function handleChange(e){
     setFormData({
@@ -43,7 +43,7 @@ function ManagePage() {
           body: JSON.stringify(newCar),
       })
       .then((r) => r.json())
-      console.log("You submitted!")
+      // console.log("You submitted!")
   }
 
   function handleDeleteCar(carToDelete) {
